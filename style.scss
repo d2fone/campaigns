@@ -1,0 +1,608 @@
+:root {
+    color-scheme: light dark;
+}
+
+$primary: #379237;
+$secondary: #54b435;
+
+$backgroundMain: light-dark(#fff, #000);
+$backgroundSlate: light-dark(#e5efe5, #0e1514);
+$textPrimary: light-dark(#000, #fff);
+$textSecondary: light-dark(#666, #fff);
+$textDisabled: light-dark(#848484, #848484);
+
+$successColor: light-dark(#000, #fff);
+$warningColor: light-dark(#f5a524, #f5a524);
+$errorColor: light-dark(#F31260, #F31260);
+$infoColor: light-dark(#006FEE, #006FEE);
+
+
+$titleSize: clamp(1.5rem, 3vh, 1.2rem);
+$subTitleSize: clamp(1.2rem, 3vh, 1rem);
+$textSize: clamp(0.9rem, 3vh, 0.8rem);
+$captionSize: clamp(0.7rem, 3vh, 0.75rem);
+
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+.title {
+    font-size: $titleSize;
+    font-weight: 500;
+}
+
+.subTitle {
+    font-size: $subTitleSize;
+    font-weight: 500;
+    color: $primary;
+}
+
+p,
+span,
+a,
+.text {
+    font-size: $textSize;
+    font-weight: 500;
+}
+
+.caption {
+    font-size: $captionSize;
+    font-weight: 400;
+}
+
+* {
+    font-family: "Noto Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6,
+    & button,
+    &.title {
+        font-size: $titleSize;
+        font-weight: 500;
+    }
+
+    &.subTitle {
+        font-size: $subTitleSize;
+        font-weight: 500;
+    }
+
+    & p,
+    & span,
+    & a,
+    &.text {
+        font-size: $textSize;
+        font-weight: 500;
+    }
+
+    &.caption {
+        font-size: $captionSize;
+        font-weight: 400;
+    }
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    color: $primary;
+    text-decoration: none;
+    font-size: inherit;
+
+    &:active {
+        text-decoration: underline;
+        color: $infoColor;
+
+    }
+}
+
+body {
+    min-height: 100dvh;
+    color: $textPrimary;
+    background: $backgroundSlate;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    align-content: stretch;
+
+    background-image: linear-gradient(180deg, light-dark(#e5eee5, #383838) 85%, light-dark(#ffffff00, #ffffff00)), url(./top-bg.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+
+    position: relative;
+
+    &[data-lang="en"] {
+        & * {
+            font-family: "Noto Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-variation-settings: "wdth" 100;
+        }
+
+    }
+
+    &[data-lang="hi"] {
+        & * {
+            font-family: "Noto Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-variation-settings: "wdth" 100;
+        }
+    }
+
+    &[data-lang="pa"] {
+        & * {
+            font-family: "Noto Serif Gurmukhi", serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+    }
+
+    & .drone {
+        position: fixed;
+        bottom: 4.8rem;
+        left: 1.5rem;
+        object-fit: contain;
+        height: 22.5svw;
+        filter: drop-shadow(0px 11px 7px #ffffff40);
+        transform: scale(1.5) rotate(0deg) translateX(80vw);
+        animation: hoverDrone 12000ms ease infinite;
+    }
+
+
+
+    & header {
+        position: sticky;
+        top: 0;
+        height: 64px;
+        z-index: 99999;
+
+        & nav {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            align-content: flex-start;
+            padding: 0 0.5rem;
+
+            border-top: 4px solid $primary;
+
+            & a {
+                text-decoration: none;
+                cursor: pointer;
+
+                & .logo {
+                    max-height: 48px;
+                    object-fit: contain;
+                    border-radius: 0 0 1.2rem 1.2rem;
+                    padding: 0.5rem;
+
+                    @media (prefers-color-scheme: dark) {
+                        filter: brightness(1.2) drop-shadow(0 1px 3px #ffffff66);
+                    }
+
+                    @media (prefers-color-scheme: light) {
+                        filter: brightness(0.8);
+                    }
+                }
+            }
+        }
+
+
+        & .langOptions {
+            position: absolute;
+            top: 8px;
+            left: 5px;
+            background: $backgroundMain;
+            border-radius: 6px;
+            padding: 0 0 0 2pxpx;
+            z-index: 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1px;
+
+            & svg {
+                height: 14px;
+                color: $primary;
+            }
+
+            & select {
+                width: 50px;
+                border: none;
+                // background: #f16334;
+                background: transparent;
+
+                &:active,
+                &:focus {
+                    border: none;
+                    outline: none;
+                }
+            }
+        }
+    }
+
+    & main {
+        width: min(100vw, 600px);
+        margin-inline: auto;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        align-content: stretch;
+
+        & .msgSection {
+            padding: 1rem;
+            box-shadow: 0 4px 12px -9px rgba(131, 131, 131, 0.4392156863);
+            margin-block: 2rem;
+            border-radius: 18px;
+            margin-inline: 1rem;
+            border: 2px solid $primary;
+            opacity: 0;
+        }
+
+        & .formSection {
+            padding: 1rem;
+            flex: 1;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+
+            & form {
+                flex: 1;
+                max-width: 85vw;
+                display: flex;
+                flex-flow: column;
+                user-select: none;
+
+                & .inputBox {
+                    color: $primary;
+                    display: flex;
+                    flex-flow: column;
+                    justify-content: flex-start;
+                    align-items: stretch;
+                    height: 78px;
+
+                    &:has(input:required) {
+                        & label:after {
+                            content: "*";
+                            color: $errorColor;
+                            font-size: 10px;
+                        }
+                    }
+
+                    &:has(input:focus) {
+                        & .inputConatainer {
+                            outline: 2px solid #37923760;
+                            outline-offset: -2px;
+                            border-radius: 20px;
+                            transition: all 240ms ease-in-out;
+                            // box-shadow: 0 0 0 3px #37923760;
+                        }
+                    }
+
+                    &:has(input.error) {
+                        color: $errorColor;
+
+                        & .inputConatainer {
+                            outline: 2px solid #F3126060;
+                            outline-offset: -2px;
+                        }
+
+                        & span.errorLabel {
+                            display: inherit;
+                        }
+                    }
+
+                    & label {
+                        font-size: 12px;
+                        padding-left: 12px;
+                        // text-transform: uppercase;
+                        letter-spacing: 0.5px;
+                    }
+
+                    & .errorLabel {
+                        padding-left: 12px;
+                        font-size: 10px;
+                        letter-spacing: 0px;
+                        color: $errorColor;
+                        display: none;
+                    }
+
+
+                    & .inputConatainer {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                        padding: 12px;
+                        background: $backgroundMain;
+                        border-radius: 1rem;
+
+                        & input {
+                            background: transparent;
+                            border: none;
+                            outline: none;
+                            flex: 1;
+                            font-size: 1rem;
+                            color: $textSecondary;
+                            caret-color: $primary;
+                            font-weight: 500;
+
+                            &::placeholder {
+                                color: $textDisabled;
+                                font-size: 14px;
+                            }
+                        }
+
+                    }
+                }
+
+                & .consentBlock {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    gap: 0.5rem;
+
+                    & input[type="checkbox"] {
+                        accent-color: $warningColor;
+                        height: 16px;
+                        width: 16px;
+                    }
+
+                    & label {
+                        font-size: 12px;
+                        color: $textSecondary;
+                    }
+                }
+
+                & .submitButton {
+                    margin-block: 1.5rem;
+                }
+            }
+        }
+
+    }
+
+    & footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #ffffff60;
+        padding: 6px;
+
+        & p {
+            font-size: $captionSize;
+            color: #fff;
+            font-weight: 400;
+        }
+    }
+
+}
+
+.heading {
+    margin: 0;
+    font-size: clamp(1.2rem, 5.5vw, 1.3rem);
+    font-weight: 700;
+    color: $primary;
+    margin-bottom: 0.5rem;
+}
+
+.des {
+    font-size: clamp(0.7rem, 3vw, 0.9rem);
+    color: $textSecondary;
+    max-width: 45ch;
+    margin-inline: auto;
+}
+
+.submitButton {
+    background: $primary;
+    border: none;
+    border-radius: 1rem;
+    padding: 12px;
+    color: $backgroundSlate;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 160ms ease-in-out;
+
+    &:active {
+        letter-spacing: 0px;
+        border-radius: 1.5rem;
+    }
+}
+
+.modal {
+    height: 100svh;
+    width: 100%;
+    background: #00000060;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: $backgroundSlate;
+
+    & .modalContent {
+        min-height: 50vh;
+        width: 90vw;
+        background: $backgroundSlate;
+        border-radius: 1.5rem;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+
+        & svg {
+            height: 60vw;
+            width: 60vw;
+        }
+
+        & .des {
+            max-width: 40ch;
+        }
+
+        & .qq {
+            background: $primary;
+            border: none;
+            border-radius: 1rem;
+            padding: 8px;
+            color: $backgroundSlate;
+            transition: all 160ms ease-in-out;
+            font-size: 14px;
+            width: 120px;
+            margin-top: 2rem;
+
+            &:active {
+                letter-spacing: 0px;
+                border-radius: 1.5rem;
+            }
+        }
+    }
+
+
+}
+
+#loadingView {
+    height: 100svh;
+    width: 100%;
+    background: #00000060;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    // background: $backgroundSlate;
+    z-index: 999999;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 65px;
+    aspect-ratio: 1;
+    position: relative;
+}
+
+.loader:before,
+.loader:after {
+    content: "";
+    position: absolute;
+    border-radius: 50px;
+    box-shadow: 0 0 0 3px inset $primary;
+    animation: l4 2.5s infinite;
+}
+
+.loader:after {
+    animation-delay: -1.25s;
+}
+
+@keyframes l4 {
+    0% {
+        inset: 0 35px 35px 0;
+    }
+
+    12.5% {
+        inset: 0 35px 0 0;
+    }
+
+    25% {
+        inset: 35px 35px 0 0;
+    }
+
+    37.5% {
+        inset: 35px 0 0 0;
+    }
+
+    50% {
+        inset: 35px 0 0 35px;
+    }
+
+    62.5% {
+        inset: 0 0 0 35px;
+    }
+
+    75% {
+        inset: 0 0 35px 35px;
+    }
+
+    87.5% {
+        inset: 0 0 35px 0;
+    }
+
+    100% {
+        inset: 0 35px 35px 0;
+    }
+}
+
+@keyframes hoverDrone {
+    0% {
+        transform-origin: center;
+        transform: scale(1.5) rotate(0deg) translateX(80vw);
+        opacity: 1;
+
+    }
+
+    60% {
+        transform: scale(0.3) rotate(24deg) translateX(20vw);
+        opacity: 0.6;
+
+    }
+
+    100% {
+        transform: scale(0.2) rotate(12deg) translateX(-2rem);
+        opacity: 0.1;
+
+    }
+}
+
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+
+.textLeft {
+    text-align: left;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.textRight {
+    text-align: right;
+}
+
+.cls-1 {
+    fill: url(#linear-gradient);
+    filter: url(#drop-shadow-1);
+}
+
+.cls-2 {
+    fill: #fff;
+    stroke: #000;
+    stroke-width: 2px;
+}
+
+.cls-3 {
+    fill: $primary;
+}

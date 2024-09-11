@@ -1,0 +1,494 @@
+:root {
+  color-scheme: light dark;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+.title {
+  font-size: clamp(1.5rem, 3vh, 1.2rem);
+  font-weight: 500;
+}
+
+.subTitle {
+  font-size: clamp(1.2rem, 3vh, 1rem);
+  font-weight: 500;
+  color: #379237;
+}
+
+p,
+span,
+a,
+.text {
+  font-size: clamp(0.9rem, 3vh, 0.8rem);
+  font-weight: 500;
+}
+
+.caption {
+  font-size: clamp(0.7rem, 3vh, 0.75rem);
+  font-weight: 400;
+}
+
+* {
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+* h1, * h2, * h3, * h4, * h5, * h6, * button, *.title {
+  font-size: clamp(1.5rem, 3vh, 1.2rem);
+  font-weight: 500;
+}
+*.subTitle {
+  font-size: clamp(1.2rem, 3vh, 1rem);
+  font-weight: 500;
+}
+* p, * span, * a, *.text {
+  font-size: clamp(0.9rem, 3vh, 0.8rem);
+  font-weight: 500;
+}
+*.caption {
+  font-size: clamp(0.7rem, 3vh, 0.75rem);
+  font-weight: 400;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: #379237;
+  text-decoration: none;
+  font-size: inherit;
+}
+a:active {
+  text-decoration: underline;
+  color: light-dark(#006FEE, #006FEE);
+}
+
+body {
+  min-height: 100dvh;
+  color: light-dark(#000, #fff);
+  background: light-dark(#e5efe5, #0e1514);
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: stretch;
+  background-image: linear-gradient(180deg, light-dark(#e5eee5, #383838) 85%, light-dark(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0))), url(./top-bg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  position: relative;
+}
+body[data-lang=en] * {
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+body[data-lang=hi] * {
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+body[data-lang=pa] * {
+  font-family: "Noto Serif Gurmukhi", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+body .drone {
+  position: fixed;
+  bottom: 4.8rem;
+  left: 1.5rem;
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: 22.5svw;
+  filter: drop-shadow(0px 11px 7px rgba(255, 255, 255, 0.2509803922));
+  transform: scale(1.5) rotate(0deg) translateX(80vw);
+  animation: hoverDrone 12000ms ease infinite;
+}
+body header {
+  position: sticky;
+  top: 0;
+  height: 64px;
+  z-index: 99999;
+}
+body header nav {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  padding: 0 0.5rem;
+  border-top: 4px solid #379237;
+}
+body header nav a {
+  text-decoration: none;
+  cursor: pointer;
+}
+body header nav a .logo {
+  max-height: 48px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 0 0 1.2rem 1.2rem;
+  padding: 0.5rem;
+}
+@media (prefers-color-scheme: dark) {
+  body header nav a .logo {
+    filter: brightness(1.2) drop-shadow(0 1px 3px rgba(255, 255, 255, 0.4));
+  }
+}
+@media (prefers-color-scheme: light) {
+  body header nav a .logo {
+    filter: brightness(0.8);
+  }
+}
+body header .langOptions {
+  position: absolute;
+  top: 8px;
+  left: 5px;
+  background: light-dark(#fff, #000);
+  border-radius: 6px;
+  padding: 0 0 0 2pxpx;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+}
+body header .langOptions svg {
+  height: 14px;
+  color: #379237;
+}
+body header .langOptions select {
+  width: 50px;
+  border: none;
+  background: transparent;
+}
+body header .langOptions select:active, body header .langOptions select:focus {
+  border: none;
+  outline: none;
+}
+body main {
+  width: min(100vw, 600px);
+  margin-inline: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: stretch;
+}
+body main .msgSection {
+  padding: 1rem;
+  box-shadow: 0 4px 12px -9px rgba(131, 131, 131, 0.4392156863);
+  margin-block: 2rem;
+  border-radius: 18px;
+  margin-inline: 1rem;
+  border: 2px solid #379237;
+  opacity: 0;
+}
+body main .formSection {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+body main .formSection form {
+  flex: 1;
+  max-width: 85vw;
+  display: flex;
+  flex-flow: column;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+body main .formSection form .inputBox {
+  color: #379237;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  height: 78px;
+}
+body main .formSection form .inputBox:has(input:required) label:after {
+  content: "*";
+  color: light-dark(#F31260, #F31260);
+  font-size: 10px;
+}
+body main .formSection form .inputBox:has(input:focus) .inputConatainer {
+  outline: 2px solid rgba(55, 146, 55, 0.3764705882);
+  outline-offset: -2px;
+  border-radius: 20px;
+  transition: all 240ms ease-in-out;
+}
+body main .formSection form .inputBox:has(input.error) {
+  color: light-dark(#F31260, #F31260);
+}
+body main .formSection form .inputBox:has(input.error) .inputConatainer {
+  outline: 2px solid rgba(243, 18, 96, 0.3764705882);
+  outline-offset: -2px;
+}
+body main .formSection form .inputBox:has(input.error) span.errorLabel {
+  display: inherit;
+}
+body main .formSection form .inputBox label {
+  font-size: 12px;
+  padding-left: 12px;
+  letter-spacing: 0.5px;
+}
+body main .formSection form .inputBox .errorLabel {
+  padding-left: 12px;
+  font-size: 10px;
+  letter-spacing: 0px;
+  color: light-dark(#F31260, #F31260);
+  display: none;
+}
+body main .formSection form .inputBox .inputConatainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 12px;
+  background: light-dark(#fff, #000);
+  border-radius: 1rem;
+}
+body main .formSection form .inputBox .inputConatainer input {
+  background: transparent;
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 1rem;
+  color: light-dark(#666, #fff);
+  caret-color: #379237;
+  font-weight: 500;
+}
+body main .formSection form .inputBox .inputConatainer input::-moz-placeholder {
+  color: light-dark(#848484, #848484);
+  font-size: 14px;
+}
+body main .formSection form .inputBox .inputConatainer input::placeholder {
+  color: light-dark(#848484, #848484);
+  font-size: 14px;
+}
+body main .formSection form .consentBlock {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+}
+body main .formSection form .consentBlock input[type=checkbox] {
+  accent-color: light-dark(#f5a524, #f5a524);
+  height: 16px;
+  width: 16px;
+}
+body main .formSection form .consentBlock label {
+  font-size: 12px;
+  color: light-dark(#666, #fff);
+}
+body main .formSection form .submitButton {
+  margin-block: 1.5rem;
+}
+body footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.3764705882);
+  padding: 6px;
+}
+body footer p {
+  font-size: clamp(0.7rem, 3vh, 0.75rem);
+  color: #fff;
+  font-weight: 400;
+}
+
+.heading {
+  margin: 0;
+  font-size: clamp(1.2rem, 5.5vw, 1.3rem);
+  font-weight: 700;
+  color: #379237;
+  margin-bottom: 0.5rem;
+}
+
+.des {
+  font-size: clamp(0.7rem, 3vw, 0.9rem);
+  color: light-dark(#666, #fff);
+  max-width: 45ch;
+  margin-inline: auto;
+}
+
+.submitButton {
+  background: #379237;
+  border: none;
+  border-radius: 1rem;
+  padding: 12px;
+  color: light-dark(#e5efe5, #0e1514);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 160ms ease-in-out;
+}
+.submitButton:active {
+  letter-spacing: 0px;
+  border-radius: 1.5rem;
+}
+
+.modal {
+  height: 100svh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3764705882);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: light-dark(#e5efe5, #0e1514);
+}
+.modal .modalContent {
+  min-height: 50vh;
+  width: 90vw;
+  background: light-dark(#e5efe5, #0e1514);
+  border-radius: 1.5rem;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.modal .modalContent svg {
+  height: 60vw;
+  width: 60vw;
+}
+.modal .modalContent .des {
+  max-width: 40ch;
+}
+.modal .modalContent .qq {
+  background: #379237;
+  border: none;
+  border-radius: 1rem;
+  padding: 8px;
+  color: light-dark(#e5efe5, #0e1514);
+  transition: all 160ms ease-in-out;
+  font-size: 14px;
+  width: 120px;
+  margin-top: 2rem;
+}
+.modal .modalContent .qq:active {
+  letter-spacing: 0px;
+  border-radius: 1.5rem;
+}
+
+#loadingView {
+  height: 100svh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3764705882);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999999;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 65px;
+  aspect-ratio: 1;
+  position: relative;
+}
+
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  border-radius: 50px;
+  box-shadow: 0 0 0 3px inset #379237;
+  animation: l4 2.5s infinite;
+}
+
+.loader:after {
+  animation-delay: -1.25s;
+}
+
+@keyframes l4 {
+  0% {
+    inset: 0 35px 35px 0;
+  }
+  12.5% {
+    inset: 0 35px 0 0;
+  }
+  25% {
+    inset: 35px 35px 0 0;
+  }
+  37.5% {
+    inset: 35px 0 0 0;
+  }
+  50% {
+    inset: 35px 0 0 35px;
+  }
+  62.5% {
+    inset: 0 0 0 35px;
+  }
+  75% {
+    inset: 0 0 35px 35px;
+  }
+  87.5% {
+    inset: 0 0 35px 0;
+  }
+  100% {
+    inset: 0 35px 35px 0;
+  }
+}
+@keyframes hoverDrone {
+  0% {
+    transform-origin: center;
+    transform: scale(1.5) rotate(0deg) translateX(80vw);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(0.3) rotate(24deg) translateX(20vw);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(0.2) rotate(12deg) translateX(-2rem);
+    opacity: 0.1;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.textLeft {
+  text-align: left;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.textRight {
+  text-align: right;
+}
+
+.cls-1 {
+  fill: url(#linear-gradient);
+  filter: url(#drop-shadow-1);
+}
+
+.cls-2 {
+  fill: #fff;
+  stroke: #000;
+  stroke-width: 2px;
+}
+
+.cls-3 {
+  fill: #379237;
+}/*# sourceMappingURL=style.css.map */
